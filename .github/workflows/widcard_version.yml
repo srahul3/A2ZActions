@@ -9,4 +9,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checking out!
-        uses: actions/checkout@v2.x?      
+        uses: actions/checkout@v2
+      - uses: octokit/request-action@v2.x
+        id: get_latest_release
+        with:
+          route: GET /repos/{owner}/{repo}/releases/latest
+          owner: octokit
+          repo: request-action
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
