@@ -1,21 +1,12 @@
 on:
-  issues:
-    types: [opened, edited, milestoned, closed]
+  workflow_dispatch:
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
 jobs:
-  job1:  
-    if: github.event.issue.state == 'closed' && github.event.issue.state_reason == 'completed'
+  job1:    
     runs-on: ubuntu-latest
     steps:
       - name: Checking out!
-        uses: actions/checkout@v2.x
-      - name: get all releases
-        run: |
-          gh release list
-      - name: View the github context
-        run: echo "$GITHUB_CONTEXT"
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
+        uses: actions/checkout@v2.x      
