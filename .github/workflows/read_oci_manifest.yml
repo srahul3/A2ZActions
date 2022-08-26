@@ -13,7 +13,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           nwo="srahul3/oras_artifact"
-          tag="v1"
+          tag="sha256-e5633be4f953ae0e7a5cdbf4cffe2bc37904aee623b1eb8de2dca0851c4545ec.sig"
           host="https://ghcr.io"
           manifest_uri="${host}/v2/${nwo}/manifests/${tag}"
           GHCR_TOKEN=$(echo ${{ secrets.GITHUB_TOKEN }} | base64)
