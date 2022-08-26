@@ -18,5 +18,5 @@ jobs:
           manifest_uri="${host}/v2/${nwo}/manifests/${tag}"
           GHCR_TOKEN=$(echo ${{ secrets.GITHUB_TOKEN }} | base64)
           MANIFEST=$(curl -X GET "${manifest_uri}" -H "Authorization: Bearer ${GHCR_TOKEN}")
-          echo MANIFEST
+          echo $(MANIFEST)
           
