@@ -15,8 +15,10 @@ jobs:
           #nwo="srahul3/oras_artifact"
           #tag="sha256-e5633be4f953ae0e7a5cdbf4cffe2bc37904aee623b1eb8de2dca0851c4545ec.sig"
           #tag="sha256-e5633be4f953ae0e7a5cdbf4cffe2bc37904aee623b1eb8de2dca0851c4545ec.sig"
-          nwo="srahul3/oci-image-sdk-public"
-          tag="1.0.1-ghtoken"
+          #nwo="srahul3/oci-image-sdk-public"
+          #tag="1.0.1-ghtoken"
+          nwo="srahul3/oras_artifact"
+          tag="1.0.0"
           host="https://ghcr.io"
           manifest_uri="${host}/v2/${nwo}/manifests/${tag}"
           GHCR_TOKEN=$(echo ${{ secrets.GITHUB_TOKEN }} | base64)
