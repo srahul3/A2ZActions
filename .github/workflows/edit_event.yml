@@ -1,7 +1,7 @@
 name: test-edited event
 on:
   release:
-    types: [edited]
+    types: [created, edited]
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
