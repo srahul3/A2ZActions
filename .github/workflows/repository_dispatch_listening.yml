@@ -1,0 +1,12 @@
+name: Listening repository_dispatch
+on:
+  repository_dispatch:
+    types: [aop-migrate]
+
+jobs:  
+  build:    
+    runs-on: ubuntu-latest
+
+    steps:      
+      - name: Run a one-line script
+        run: echo "${{ github.event.client_payload.message }}"
