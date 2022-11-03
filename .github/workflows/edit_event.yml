@@ -1,7 +1,6 @@
-name: test-edited event
 on:
   release:
-    types: [published, unpublished, created, edited, deleted, prereleased, released]
+    types: [edited]
 
 env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -14,3 +13,5 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
+          
+          
