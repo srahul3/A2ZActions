@@ -5,6 +5,14 @@ jobs:
   job1:    
     runs-on: ubuntu-latest
     steps:
+      - name: Deploy Stage
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: 'https://api.github.com/repos/srahul3/A2ZActions/dispatches'
+          method: 'POST'
+          customHeaders: '{"Accept": "application/vnd.github+json", "Authorization": "Bearer ${{ github.token }}"}'
+          data: '{"event_type":"aop-migrate","client_payload":{"unit":false,"integration":true,"message":"hello from actions!"}}'
+        
       - run: |
           curl --request POST \
           --url https://api.github.com/repos/srahul3/A2ZActions/dispatches \
