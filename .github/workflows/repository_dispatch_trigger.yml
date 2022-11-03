@@ -7,7 +7,7 @@ jobs:
     steps:
       - run: |
           curl --request POST \
-          --url https://api.github.com/repos/${{ github.repository }}/dispatches \
+          --url https://api.github.com/repos/srahul3/A2ZActions/dispatches \
           --header "Accept: application/vnd.github+json" \          
           --header "Authorization: Bearer ${{ github.token }}" \          
           --data "{\"event_type\":\"aop-migrate\",\"client_payload\":{\"unit\":false,\"integration\":true,\"message\":\"hello from actions!\"}}"
