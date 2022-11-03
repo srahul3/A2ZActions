@@ -8,7 +8,7 @@ jobs:
       - run: |
           curl --request POST \
           --url https://api.github.com/repos/${{ github.repository }}/dispatches \
-          --header 'Accept: application/vnd.github+json' \          
-          --header 'Authorization: Bearer ${{ github.token }}' \          
-          --data '{"event_type":"aop-migrate","client_payload":{"unit":false,"integration":true, "message": "hello from actions!"}}'
+          --header "Accept: application/vnd.github+json" \          
+          --header "Authorization: Bearer ${{ github.token }}" \          
+          --data "{"event_type":"aop-migrate","client_payload":{"unit":false,"integration":true, "message": "hello from actions!"}}"
           --fail
