@@ -9,6 +9,6 @@ jobs:
 
     steps:      
       - name: Run a one-line script
-        run: echo "${{ github.event.payload.release.tag_name }}"
+        run: echo "${{ github.event.client_payload.release.tag_name }}"
       - name: Run a one-line script 2
-        run: echo "${{ github.event.payload.release.id }}"
+        run: echo "${{ github.event.client_payload.release.id }}"
