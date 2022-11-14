@@ -24,7 +24,6 @@ jobs:
             exit 1          
           echo 'resolved `ref` is $ref'
           echo "value=$ref" >> $GITHUB_OUTPUT
-      
       - name: Checking out!
         uses: actions/checkout@v3
         with:
