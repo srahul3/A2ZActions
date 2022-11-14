@@ -7,10 +7,20 @@ on: # rebuild any PRs and main branch changes
 
 jobs:
   package-and-publish: # make sure the action works on a clean machine without building
-    runs-on: ubuntu-latest
-    outputs:
-      output1: ${{ steps.ref.outputs.value }}
+    runs-on: ubuntu-latest    
     steps:
+      - name: Set the git_tag env
+        run: |
+          if ${{ github.event.payload.release.tag_name}} != ''; then
+            echo 'resolving the `ref` from the release event'
+            echo "ref=${{ github.event.payload.release.tag_name}}" >> $GITHUB_ENV
+          elif ${{ github.event.client_payload.release.tag_name}} != ''; then
+            echo 'resolving the `ref` from the release event'
+            echo "ref=${{ github.event.client_payload.release.tag_name}}" >> $GITHUB_ENV
+          else
+            exit 1
+          fi
+          
       - name: Set the git_tag from event
         id: ref
         run: |
