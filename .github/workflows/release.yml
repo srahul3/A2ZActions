@@ -25,12 +25,12 @@ jobs:
             ref=$(echo "${{ github.event.client_payload.release.tag_name}}")
           else
             exit 1          
-          echo 'resolved `ref` is $ref'
-          echo "value=${ref}" >> $GITHUB_OUTPUT
+          echo 'resolved ref is $ref'
+          echo "value=$ref" >> $GITHUB_OUTPUT
       - name: Checking out!
         uses: actions/checkout@v3
         with:
-           ref: ${{ steps.ref.outputs.value }}
+           ref: ${{ steps.ref.outputs.output1 }}
        
       - name: Publish action 
         uses: actions-on-packages/package-action@0.4.1
