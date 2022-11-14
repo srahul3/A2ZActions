@@ -16,20 +16,20 @@ jobs:
         run: |
           if ${RELEASE_REF}; then
             echo 'resolving the `ref` from the release event'
-            echo "ref=${RELEASE_REF}" >> $GITHUB_ENV
+            echo "tag_name=${RELEASE_REF}" >> $GITHUB_ENV
           elif ${MIGRATION_REF}; then
             echo 'resolving the `ref` from the release event'
-            echo "ref=${MIGRATION_REF}" >> $GITHUB_ENV
+            echo "tag_name=${MIGRATION_REF}" >> $GITHUB_ENV
           else
             exit 1
           fi
       - name: test        
         run: |
-          echo "${{ env.ref }}"
+          echo "${{ env.tag_name }}"
       - name: Checking out!
         uses: actions/checkout@v3
         with:
-           ref: ${{ env.ref }}
+           ref: ${{ env.tag_name }}
        
       - name: Publish action 
         uses: actions-on-packages/package-action@0.4.1
