@@ -16,7 +16,8 @@ jobs:
           then
             echo 'resolving the `ref` from the release event'
             ref = ${{ github.event.payload.release.tag_name}}
-          elif [[ ${{ github.event.client_payload.release.tag_name}} ]]; then
+          elif [ ${{ github.event.client_payload.release.tag_name}} != '' ]
+          then
             echo 'resolving the `ref` from the migration event'
             ref = ${{ github.event.client_payload.release.tag_name}}
           else
