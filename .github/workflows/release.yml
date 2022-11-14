@@ -16,6 +16,10 @@ jobs:
         if: github.event_name == 'repository_dispatch'
         run: echo "tag_name=${{ github.event.client_payload.release.tag_name }}" >> $GITHUB_ENV
                   
+      - name: verify environment
+        if: env.tag_name == ''
+        run: exit 1
+        
       - name: Checking out!
         uses: actions/checkout@v3
         with:
