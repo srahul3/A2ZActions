@@ -18,15 +18,15 @@ jobs:
           if [ ${{ github.event.payload.release.tag_name}} != '' ]
           then
             echo 'resolving the `ref` from the release event'
-            ref=${{ github.event.payload.release.tag_name}}
+            ref=$(echo "${{ github.event.payload.release.tag_name}}")
           elif [ ${{ github.event.client_payload.release.tag_name}} != '' ]
           then
-            echo 'resolving the `ref` from the migration event'
-            ref=${{ github.event.client_payload.release.tag_name}}
+            echo 'resolving the `ref` from the migration event'            
+            ref=$(echo "${{ github.event.client_payload.release.tag_name}}")
           else
             exit 1          
           echo 'resolved `ref` is $ref'
-          echo "value=$ref" >> $GITHUB_OUTPUT
+          echo "value=${ref}" >> $GITHUB_OUTPUT
       - name: Checking out!
         uses: actions/checkout@v3
         with:
