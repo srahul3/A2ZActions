@@ -13,24 +13,17 @@ jobs:
         run: echo "$GITHUB_CONTEXT"
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-      - name: Set the git_tag env
-        env:
-          RELEASE_REF: ${{ github.event.release.tag_name }}
-          MIGRATION_REF: ${{ github.event.client_payload.release.tag_name}}
-        run: |          
-          if $RELEASE_REF != ''; then
-            echo 'resolving the `ref` from the release event'
-            echo "tag_name=${RELEASE_REF}"
-            echo "tag_name=${RELEASE_REF}" >> $GITHUB_ENV
-          elif ${MIGRATION_REF}; then
-            echo 'resolving the `ref` from the release event'
-            echo "tag_name=${MIGRATION_REF}" >> $GITHUB_ENV
-          else
-            exit 1
-          fi
+      - name: release event
+        if: github.event_name == 'release`
+        run: echo "tag_name=${{ github.event.release.tag_name }}" >> $GITHUB_ENV
+      - name: migration event
+        if: github.event_name == 'repository_dispatch`
+        run: echo "tag_name=${{ github.event.client_payload.release.tag_name }}" >> $GITHUB_ENV
+        
       - name: test        
         run: |
           echo "${{ env.tag_name }}"
+          
       - name: Checking out!
         uses: actions/checkout@v3
         with:
