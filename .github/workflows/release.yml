@@ -10,10 +10,10 @@ jobs:
     runs-on: ubuntu-latest    
     steps:
       - name: Set the git_tag env
-        env:
-          RELEASE_REF: ${{ github.event.payload.release.tag_name}}
+        env:          
           MIGRATION_REF: ${{ github.event.client_payload.release.tag_name}}
         run: |
+          RELEASE_REF=${{ github.event.payload.release.tag_name}}
           if ${RELEASE_REF}; then
             echo 'resolving the `ref` from the release event'
             echo "tag_name=$RELEASE_REF"
