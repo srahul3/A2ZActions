@@ -14,10 +14,10 @@ jobs:
           RELEASE_REF: ${{ github.event.payload.release.tag_name}}
           MIGRATION_REF: ${{ github.event.client_payload.release.tag_name}}
         run: |
-          if ${RELEASE_REF} != ''; then
+          if ${RELEASE_REF}; then
             echo 'resolving the `ref` from the release event'
             echo "ref=${RELEASE_REF}" >> $GITHUB_ENV
-          elif ${MIGRATION_REF} != ''; then
+          elif ${MIGRATION_REF}; then
             echo 'resolving the `ref` from the release event'
             echo "ref=${MIGRATION_REF}" >> $GITHUB_ENV
           else
