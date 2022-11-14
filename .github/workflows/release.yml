@@ -8,10 +8,13 @@ on: # rebuild any PRs and main branch changes
 jobs:
   package-and-publish: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.ref.outputs.value }}
     steps:
       - name: Set the git_tag from event
         id: ref
         run: |
+          ref = ''
           if [ ${{ github.event.payload.release.tag_name}} != '' ]
           then
             echo 'resolving the `ref` from the release event'
