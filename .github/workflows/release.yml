@@ -12,10 +12,10 @@ jobs:
       - name: Set the git_tag from event
         id: ref
         run: |
-          if ${{ github.event.payload.release.tag_name}} != ''
+          if [[ ${{ github.event.payload.release.tag_name}} != '' ]]; then
             echo 'resolving the `ref` from the release event'
             ref = ${{ github.event.payload.release.tag_name}}
-          else if ${{ github.event.client_payload.release.tag_name}} != ''
+          elif [[ ${{ github.event.client_payload.release.tag_name}} != '' ]]; then
             echo 'resolving the `ref` from the migration event'
             ref = ${{ github.event.client_payload.release.tag_name}}
           else
