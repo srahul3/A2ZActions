@@ -11,5 +11,5 @@ jobs:
           url: 'https://api.github.com/repos/srahul3/A2ZActions/dispatches'
           method: 'POST'
           customHeaders: '{"Accept": "application/vnd.github+json", "Authorization": "Bearer ${{ github.token }}"}'
-          data: '{"event_type":"aop-migrate","client_payload":{"release":{"tag_name":"v1.1.1", "id":"12345"}}}'
+          data: '{"event_type":"actions-package-migrate","client_payload":{"release":{"tag_name":"v1.1.1", "id":"12345"}}}'
 
