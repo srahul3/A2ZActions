@@ -9,10 +9,6 @@ jobs:
   package-and-publish: # make sure the action works on a clean machine without building
     runs-on: ubuntu-latest    
     steps:
-      - name: View the github context
-        run: echo "$GITHUB_CONTEXT"
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
       - name: release event
         if: github.event_name == 'release'
         run: echo "tag_name=${{ github.event.release.tag_name }}" >> $GITHUB_ENV
