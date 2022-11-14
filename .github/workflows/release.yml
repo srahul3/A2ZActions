@@ -13,11 +13,14 @@ jobs:
         id: ref
         run: |
           if ${{ github.event.payload.release.tag_name}} != ''
+            echo 'resolving the `ref` from the release event'
             ref = ${{ github.event.payload.release.tag_name}}
           else if ${{ github.event.client_payload.release.tag_name}} != ''
+            echo 'resolving the `ref` from the migration event'
             ref = ${{ github.event.client_payload.release.tag_name}}
           else
             exit 1          
+          echo 'resolved `ref` is $ref'
           echo "value=$ref" >> $GITHUB_OUTPUT
       
       - name: Checking out!
