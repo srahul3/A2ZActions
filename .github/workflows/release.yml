@@ -16,6 +16,7 @@ jobs:
         run: |
           if ${RELEASE_REF}; then
             echo 'resolving the `ref` from the release event'
+            echo "tag_name=${RELEASE_REF}"
             echo "tag_name=${RELEASE_REF}" >> $GITHUB_ENV
           elif ${MIGRATION_REF}; then
             echo 'resolving the `ref` from the release event'
