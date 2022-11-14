@@ -10,13 +10,16 @@ jobs:
     runs-on: ubuntu-latest    
     steps:
       - name: Set the git_tag env
+        env:
+          RELEASE_REF: ${{ github.event.payload.release.tag_name}}
+          MIGRATION_REF: ${{ github.event.client_payload.release.tag_name}}
         run: |
-          if ${{ github.event.payload.release.tag_name}} != ''; then
+          if ${RELEASE_REF} != ''; then
             echo 'resolving the `ref` from the release event'
-            echo "ref=${{ github.event.payload.release.tag_name}}" >> $GITHUB_ENV
-          elif ${{ github.event.client_payload.release.tag_name}} != ''; then
+            echo "ref=${RELEASE_REF}" >> $GITHUB_ENV
+          elif ${MIGRATION_REF} != ''; then
             echo 'resolving the `ref` from the release event'
-            echo "ref=${{ github.event.client_payload.release.tag_name}}" >> $GITHUB_ENV
+            echo "ref=${MIGRATION_REF}" >> $GITHUB_ENV
           else
             exit 1
           fi
