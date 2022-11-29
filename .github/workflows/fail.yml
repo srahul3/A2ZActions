@@ -1,0 +1,9 @@
+name: Failing action download
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:      
+      - uses: invalidowner/invalidaction@v1.1.1
