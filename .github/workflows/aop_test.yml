@@ -11,4 +11,4 @@ jobs:
         uses: actions-on-packages/checkout@v3
       - name: List
         run: |
-          ls -ltra      
+          ls -ltra ./.github/workflows     
