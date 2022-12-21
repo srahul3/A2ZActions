@@ -1,0 +1,20 @@
+name: Read public package from other org
+
+on:
+  workflow_dispatch:
+
+jobs:  
+  read:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:      
+      - name: Run a multi-line script
+        run: |
+          nwo="actions-on-packages/checkout"
+          tag="2.3.3"
+          host="https://ghcr.io"
+          manifest_uri="${host}/v2/${nwo}/manifests/${tag}"
+          GHCR_TOKEN=$(echo ${{ secrets.GITHUB_TOKEN }} | base64)
+          curl -X GET "${manifest_uri}" -H "Authorization: Bearer ${GHCR_TOKEN}" -H "Accept: application/vnd.oci.image.manifest.v1+json"
