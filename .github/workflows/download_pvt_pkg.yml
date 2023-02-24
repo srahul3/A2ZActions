@@ -25,6 +25,6 @@ jobs:
           host="https://ghcr.io"
           manifest_uri="${host}/v2/${nwo}/blobs/sha256:9fbdc4de1b1ea4d58886d3dda8ef2fa14c2c4e7d9c5df52022834a6c481a5c8c"
           GHCR_TOKEN=$(echo ${{ secrets.GITHUB_TOKEN }} | base64)
-          curl -X GET "${manifest_uri}" -H "Authorization: Bearer ${GHCR_TOKEN}" -H "Accept: application/vnd.oci.image.manifest.v1+json"
+          curl --location -X GET "${manifest_uri}" -H "Authorization: Bearer ${GHCR_TOKEN}" -H "Accept: application/vnd.oci.image.manifest.v1+json"
 
           
