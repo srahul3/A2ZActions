@@ -1,4 +1,4 @@
-name: Read manifest of an OCI image on GHCR
+name: tokens insight
 
 on:
   workflow_dispatch:
