@@ -1,24 +1,21 @@
-name: tokens insight
+name: tokens minting insight
 
 on:
   workflow_dispatch:
 
-jobs:  
+jobs:
+  # The test prooves, all jobs mint thier own GITHUB_TOKEN. Hence tokens scope is limited to a job.
   read1:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:      
       - name: Run a multi-line script
         run: |          
           GHCR_TOKEN=$(echo ${{ secrets.GITHUB_TOKEN }} | base64)
           echo "${GHCR_TOKEN}"
   read2:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:      
       - name: Run a multi-line script
         run: |          
