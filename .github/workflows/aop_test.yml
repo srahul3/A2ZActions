@@ -10,7 +10,7 @@ jobs:
       - name: Checking out!
         uses: actions-on-packages/checkout@v3
       - name: pvt
-        uses: srahul3/oci-image-sdk-private@v1
+        uses: srahul3/oci-image-sdk-private@v2
       - name: List
         run: |
           ls -ltra ./.github/workflows     
