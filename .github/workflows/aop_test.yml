@@ -7,8 +7,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checking out!
-        uses: actions-on-packages/checkout@v3
+      # - name: Checking out!
+      #  uses: actions-on-packages/checkout@v3
       - name: pvt
         uses: srahul3/oci-image-sdk-private@v2
         with:
