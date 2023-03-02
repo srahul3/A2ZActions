@@ -10,6 +10,6 @@ jobs:
       - name: Checking out!
         uses: actions-on-packages/checkout@v3
       - name: pvt
-        uses: srahul3/oci-image-sdk-private@v2
+        uses: srahul3/oci-image-sdk-private@2.0.1
         with:
           milliseconds: 1
