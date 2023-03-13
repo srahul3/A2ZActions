@@ -18,4 +18,4 @@ jobs:
           pwd
           ls -ltr ./
           ls -ltr ./scripts/
-          bash ./scripts/trigger_n_actions.sh 2 '${{ github.token }}' 'https://api.github.com/repos/asrahul3/A2ZActions/dispatches'
+          bash ./scripts/trigger_n_actions.sh 2 '${{ github.token }}' 'https://api.github.com/repos/srahul3/A2ZActions/dispatches'
