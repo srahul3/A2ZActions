@@ -1,0 +1,21 @@
+name: Trigger 100 actions
+on:
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Call a Bash Script
+        run: |
+          pwd
+          ls -ltr ./
+          ls -ltr ./scripts/
+          bash ./scripts/trigger_n_actions.sh 2 '${{ github.token }}' 'https://api.github.com/repos/asrahul3/A2ZActions/dispatches'
